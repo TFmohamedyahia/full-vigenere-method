@@ -77,18 +77,37 @@ string vigenere::decryption(string text){
 
 
 int main() {
-  string key, plainText;
-  cout << "Enter The Text: "; getline(cin, plainText);
-  cout << "Enter The Key: "; getline(cin, key);
+  string key, plain, cipher;
+  int choose;
 
-  // Define vigenere object and give it key 
+  cout << "Welcome in plogram.\n";
+
+  cout << "Enter The privet key: ";
+  getline(cin, key);
+
   vigenere vig(key);
-  string ciphertext = vig.encryption(plainText);
-  string decryptedText = vig.decryption(ciphertext);
 
-  cout << "=====================================\n";
-  cout << "Encrypted Text: " << ciphertext << endl;
-  cout << "Decrypted Text: " << decryptedText << endl;
+  cout << "[1] Encryption \n";
+  cout << "[2] Decryption \n";
+  cout << "Choose what do you want: "; 
+  cin >> choose;
+  cin.ignore(); // Ignore the newline character left in the buffer
+
+  if (choose == 1) {
+    cout << "Enter The message: ";
+    getline(cin, plain);
+    string ciphertext = vig.encryption(plain);
+    cout << "Encrypted Text: " << ciphertext << endl;
+  } 
+  else if (choose == 2) {
+    cout << "Enter The Chipher: ";
+    getline(cin, cipher);
+    string decryptedText = vig.decryption(cipher); 
+    cout << "Decrypted Text: " << decryptedText << endl;
+  } 
+  else {
+    cout << "Invalid input \n";
+  }
 
   return 0;
 }
